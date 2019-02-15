@@ -1,0 +1,35 @@
+1. Install Mapbox package for React Native
+    $ npm i @mapbox/react-native-mapbox-gl
+    
+2. go to yourProject/android/build.gradle
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "$rootDir/../node_modules/react-native/android" }
+        maven { url "https://jitpack.io" }
+        maven { url "https://maven.google.com" }
+    }
+}
+
+3.go to yourProject/android/app/build.gradle
+
+dependencies {
+    compile project(':mapbox-react-native-mapbox-gl')
+}
+
+4.go to yourProject/android/settings.gradle
+
+include ':mapbox-react-native-mapbox-gl'
+project(':mapbox-react-native-mapbox-gl').projectDir = new File(rootProject.projectDir, '../node_modules/@mapbox/react-native-mapbox-gl/android/rctmgl')
+
+5.go to yourProject/android/app/src/main/java/com/yourProject/MainApplication.java
+
+insert after import com.facebook.soloader.SoLoader:
+
+import com.mapbox.rctmgl.RCTMGLPackage;
+
+insert inside getPackages() after new MainReactPackage(),
+
+new RCTMGLPackage()
+
+TOKEN MAPBOX : pk.eyJ1IjoiYmVsbGFzYWZpcmE5NyIsImEiOiJjanM0MmVpaXowMG1qNDNueWtpZjlkMmx5In0.yXuE7E7zIVkCdHbdNgrnbg

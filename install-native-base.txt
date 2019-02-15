@@ -1,0 +1,4 @@
+Memulai menggunakan Native base
+> npm i native-base
+> react-native link
+> react-native run-android
